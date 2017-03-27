@@ -74,7 +74,6 @@ app.post('/articles', function(request, response) {
 });
 
 app.put('/articles/:id', function(request, response) {
-  console.log('You made it', request.body.author, request.body.authorUrl, request.params.id);
   client.query(
     `UPDATE authors
     SET author=$1, "authorUrl"=$2
@@ -86,7 +85,6 @@ app.put('/articles/:id', function(request, response) {
     ]
   )
   .then(function() {
-    console.log('help', request.body.title, request.body.category, request.body.publishedOn, request.body.body, request.params.id);
     client.query(
       `UPDATE articles
       SET title=$1, category=$2, "publishedOn"=$3, body=$4
